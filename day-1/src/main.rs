@@ -1,19 +1,14 @@
 use std::fs;
 
-fn main()   {
-    // let tst: Vec<&str>  =  "1abc2\npqr3stu8vwx\na1b2c3d4e5f\ntreb7uchet".split("\n").collect();
+fn part_one()   {
 
-     let file_path = "./src/puzzle-input.txt";
+    let file_path = "./puzzle-input.txt";
     println!("In file {}", file_path);
 
     let file = fs::read_to_string(file_path)
         .expect("Should have been able to read the file");
     
     let contents: Vec<&str> = file.split("\n").collect();
-    // let mut buf_reader = BufReader::new(file);
-    // let mut contents = String::new();
-    // buf_reader.read_to_string(&mut contents);
-
 
     let mut total: i32 = 0; 
 
@@ -27,5 +22,10 @@ fn main()   {
         total += num;
     }
 
-    println!("{}", total.to_string());
+    println!("Part one answer: {}", total.to_string());
+}
+
+//one, two, three, four, five, six, seven, eight, and nine
+fn main(){
+    part_one();
 }
