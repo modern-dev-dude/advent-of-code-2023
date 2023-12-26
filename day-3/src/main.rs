@@ -80,16 +80,27 @@ fn part_one() {
         }
     }
 
-    println!("total {}", total);
+    println!("Part one result: {}", total);
 }
 
-// fn part_two() {
-//     let file_path = "./input.txt";
-//     let file = fs::read_to_string(file_path).expect("Should have been able to read the file");
-//     let contents: Vec<&str> = file.split("\n").collect();
-// }
+fn part_two() {
+    let file_path = "./test.txt";
+    let file = fs::read_to_string(file_path).expect("Should have been able to read the file");
+    let contents = file.replace("\n", "");
+
+    let reg_ex_sp_chars = Regex::new(r"[*]").unwrap();
+    let all_matches = reg_ex_sp_chars.find_iter(&contents);
+    for item in all_matches {
+        println!(
+            "item {}  Start: {}  End: {}",
+            item.as_str(),
+            item.start(),
+            item.end()
+        )
+    }
+}
 
 fn main() {
     part_one();
-    // part_two();
+    part_two();
 }
